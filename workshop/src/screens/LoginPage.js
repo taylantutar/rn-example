@@ -8,27 +8,38 @@ import {
   TextInput,
   Pressable
 } from 'react-native'
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 
-function LoginButton(){
+function LoginButton() {
   console.log("Clicked")
 }
 
-export default function LoginPage() {
+export default function LoginPage({navigation}) {
 
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <SafeAreaView style={styles.AndroidSafeArea}>
 
       <View style={styles.container}>
-        <Text>Hello: {email}</Text>
-        <TextInput style={styles.customInput} placeholder='Lütfen adinizi giriniz..'
+
+        <TextInput style={styles.customInput} placeholder='Email..'
           value={email}
           onChangeText={setEmail}></TextInput>
 
+        <TextInput style={styles.customInput} placeholder='Password..'
+          value={password}
+          onChangeText={setPassword}></TextInput>
+
         <Pressable style={styles.saveButton} onPress={() => LoginButton()}>
-          <Text>Kaydet</Text>
+          <Text>Login</Text>
         </Pressable>
+
+        <Pressable style={styles.signInButton} onPress={() => navigation.navigate('Sigin')}>
+          <Text style={styles.signInButtonText}>Sign in</Text>
+        </Pressable>
+
       </View>
 
     </SafeAreaView>
@@ -53,7 +64,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     borderWidth: 3,
     width: "80%",
-    height: 40,
+    height: 50,
     textAlign: "center",
     marginTop: 10
   },
@@ -64,6 +75,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 16,
-    marginTop: 10
+    marginTop: 20
+  },
+  signInButton: {
+    backgroundColor: "blue",
+    width: "30%",
+    height: 50,
+    marginTop: 25,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 16,
+  },
+  signInButtonText: {
+    color: "white"
   }
 })
