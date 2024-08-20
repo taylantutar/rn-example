@@ -6,7 +6,8 @@ import {
   View,
   SafeAreaView,
   TextInput,
-  Pressable
+  Pressable,
+  Image
 } from 'react-native'
 import React, { useState } from 'react'
 
@@ -14,7 +15,7 @@ function LoginButton() {
   console.log("Clicked")
 }
 
-export default function LoginPage({navigation}) {
+export default function LoginPage({ navigation }) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +25,8 @@ export default function LoginPage({navigation}) {
 
       <View style={styles.container}>
 
+        <Image source={require('../../assets/images/login.png')} style={styles.image} />
+
         <TextInput style={styles.customInput} placeholder='Email..'
           value={email}
           onChangeText={setEmail}></TextInput>
@@ -32,11 +35,11 @@ export default function LoginPage({navigation}) {
           value={password}
           onChangeText={setPassword}></TextInput>
 
-        <Pressable style={styles.saveButton} onPress={() => LoginButton()}>
+        <Pressable style={styles.loginButton} onPress={() => LoginButton()}>
           <Text>Login</Text>
         </Pressable>
 
-        <Pressable style={styles.signInButton} onPress={() => navigation.navigate('Sigin')}>
+        <Pressable style={styles.signInButton} onPress={() => navigation.navigate('Signin')}>
           <Text style={styles.signInButtonText}>Sign in</Text>
         </Pressable>
 
@@ -56,8 +59,15 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "top",
     alignItems: "center"
+  },
+  image: {
+    width: '60%',
+    height: '30%',
+    resizeMode: 'stretch',
+    marginBottom:50,
+    marginTop:20
   },
   customInput: {
     borderColor: "gray",
@@ -68,14 +78,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 10
   },
-  saveButton: {
+  loginButton: {
     backgroundColor: "lightblue",
     width: "80%",
     height: 50,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 16,
-    marginTop: 20
+    marginTop: 30
   },
   signInButton: {
     backgroundColor: "blue",

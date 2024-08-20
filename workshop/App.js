@@ -16,7 +16,7 @@ const App = () =>  {
           component={LoginPage}
           options={{headerShown:false}}
         />
-        { <Stack.Screen name="Sigin" component={SignIn} /> }
+        { <Stack.Screen name="Signin" component={SignIn} /> }
       </Stack.Navigator>
     </NavigationContainer>
   );
