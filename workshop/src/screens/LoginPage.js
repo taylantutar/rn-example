@@ -11,14 +11,15 @@ import {
 } from 'react-native'
 import React, { useState } from 'react'
 
-function LoginButton() {
-  console.log("Clicked")
-}
-
 export default function LoginPage({ navigation }) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  function Login() {
+    console.log(email)
+    console.log(password)
+  }
 
   return (
     <SafeAreaView style={styles.AndroidSafeArea}>
@@ -27,15 +28,16 @@ export default function LoginPage({ navigation }) {
 
         <Image source={require('../../assets/images/login.png')} style={styles.image} />
 
-        <TextInput style={styles.customInput} placeholder='Email..'
+        <TextInput></TextInput>
+        <TextInput style={styles.customInput} placeholder='Enter email..'
           value={email}
           onChangeText={setEmail}></TextInput>
 
-        <TextInput style={styles.customInput} placeholder='Password..'
+        <TextInput style={styles.customInput} secureTextEntry={true} placeholder='Enter password..'
           value={password}
           onChangeText={setPassword}></TextInput>
 
-        <Pressable style={styles.loginButton} onPress={() => LoginButton()}>
+        <Pressable style={styles.loginButton} onPress={() => Login()}>
           <Text>Login</Text>
         </Pressable>
 
@@ -48,8 +50,6 @@ export default function LoginPage({ navigation }) {
     </SafeAreaView>
   )
 }
-
-
 
 const styles = StyleSheet.create({
   AndroidSafeArea: {
@@ -66,8 +66,8 @@ const styles = StyleSheet.create({
     width: '60%',
     height: '30%',
     resizeMode: 'stretch',
-    marginBottom:50,
-    marginTop:20
+    marginBottom: 50,
+    marginTop: 20
   },
   customInput: {
     borderColor: "gray",
