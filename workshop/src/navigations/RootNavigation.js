@@ -4,7 +4,7 @@ import UserNotAuth from './UserNotAuth';
 import { NavigationContainer } from '@react-navigation/native';
 
 const RootNavigation = () => {
-    const isAuth = true;
+    const isAuth = false;
     return (
         <NavigationContainer>
             {

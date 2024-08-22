@@ -10,15 +10,20 @@ import {
   Image
 } from 'react-native'
 import React, { useState } from 'react'
+import { CustomInput } from '../components'
 
 export default function LoginPage({ navigation }) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
   function Login() {
-    console.log(email)
-    console.log(password)
+    consolo.log("Login")
+  }
+
+  function NavigateToSignin() {
+    navigation.navigate('Signin');
   }
 
   return (
@@ -28,20 +33,15 @@ export default function LoginPage({ navigation }) {
 
         <Image source={require('../../assets/images/login.png')} style={styles.image} />
 
-        <TextInput></TextInput>
-        <TextInput style={styles.customInput} placeholder='Enter email..'
-          value={email}
-          onChangeText={setEmail}></TextInput>
+        <CustomInput val={email} changeTextEvent={setEmail} pHolder='Email..' secureText={false}></CustomInput>
 
-        <TextInput style={styles.customInput} secureTextEntry={true} placeholder='Enter password..'
-          value={password}
-          onChangeText={setPassword}></TextInput>
+        <CustomInput val={password} changeTextEvent={setPassword} pHolder='Password..' secureText={true}></CustomInput>
 
         <Pressable style={styles.loginButton} onPress={() => Login()}>
           <Text>Login</Text>
         </Pressable>
 
-        <Pressable style={styles.signInButton} onPress={() => navigation.navigate('Signin')}>
+        <Pressable style={styles.signInButton} onPress={NavigateToSignin}>
           <Text style={styles.signInButtonText}>Sign in</Text>
         </Pressable>
 
@@ -69,15 +69,7 @@ const styles = StyleSheet.create({
     marginBottom: 50,
     marginTop: 20
   },
-  customInput: {
-    borderColor: "gray",
-    borderRadius: 16,
-    borderWidth: 3,
-    width: "80%",
-    height: 50,
-    textAlign: "center",
-    marginTop: 10
-  },
+
   loginButton: {
     backgroundColor: "lightblue",
     width: "80%",
@@ -91,10 +83,10 @@ const styles = StyleSheet.create({
     backgroundColor: "blue",
     width: "30%",
     height: 50,
-    marginTop: 25,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 16,
+    marginTop: 25,
   },
   signInButtonText: {
     color: "white"
