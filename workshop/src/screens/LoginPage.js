@@ -1,16 +1,13 @@
 import {
   Platform,
   StatusBar,
-  Text,
   StyleSheet,
   View,
   SafeAreaView,
-  TextInput,
-  Pressable,
   Image
 } from 'react-native'
 import React, { useState } from 'react'
-import { CustomInput } from '../components'
+import { CustomInput, CustomButton } from '../components'
 
 export default function LoginPage({ navigation }) {
 
@@ -37,13 +34,9 @@ export default function LoginPage({ navigation }) {
 
         <CustomInput val={password} changeTextEvent={setPassword} pHolder='Password..' secureText={true}></CustomInput>
 
-        <Pressable style={styles.loginButton} onPress={() => Login()}>
-          <Text>Login</Text>
-        </Pressable>
+        <CustomButton bgColor='tomato' w="50%" h="50" bRadius="16" />
 
-        <Pressable style={styles.signInButton} onPress={NavigateToSignin}>
-          <Text style={styles.signInButtonText}>Sign in</Text>
-        </Pressable>
+        <CustomButton bgColor='gray' w="30%" h="50" bRadius="16" onPressEvent={NavigateToSignin} />
 
       </View>
 
@@ -69,26 +62,4 @@ const styles = StyleSheet.create({
     marginBottom: 50,
     marginTop: 20
   },
-
-  loginButton: {
-    backgroundColor: "lightblue",
-    width: "80%",
-    height: 50,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 16,
-    marginTop: 30
-  },
-  signInButton: {
-    backgroundColor: "blue",
-    width: "30%",
-    height: 50,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 16,
-    marginTop: 25,
-  },
-  signInButtonText: {
-    color: "white"
-  }
 })
